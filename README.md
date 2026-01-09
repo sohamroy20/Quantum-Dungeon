@@ -100,11 +100,11 @@ This project aims to:
 - npm (comes with Node.js)
 
 ### Installation
-``
+```bash
 npm install
-
+```
 Clone the repository:
-``
+```bash
 git clone https://github.com/<your-username>/quantum-dungeon.git
 cd quantum-dungeon
 
