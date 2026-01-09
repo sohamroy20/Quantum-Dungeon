@@ -105,8 +105,12 @@ npm install
 ```
 Clone the repository:
 ```bash
-git clone https://github.com/<your-username>/quantum-dungeon.git
+git clone https://github.com/sohamroy20/Quantum-Dungeon.git
 cd quantum-dungeon
+npm run dev
+```
+Then open the link at localhost. Typically http://localhost:5173
+
 
 
 
