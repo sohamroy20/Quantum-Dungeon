@@ -1,55 +1,112 @@
+# Quantum Dungeon 
 
-# Quantum Dungeon
+**Quantum Dungeon** is an interactive, game-based visualization of **quantum error correction using planar surface codes**.  
+Players act as a *decoder*, identifying and correcting errors while minimizing energy and time, and avoiding logical failures caused by poor correction strategies.
 
-An interactive game that visualizes **surface-code decoding** as a puzzle game.
-
-Players act as a decoder, pairing detected defects (syndrome outcomes) while
-minimizing energy and time. Incorrect decoding paths can form logical operators
-and cause failure.
+The project is designed as an **educational tool**: it makes abstract concepts from quantum error correction tangible through gameplay.
 
 ---
 
-## 🧠 Concept
+##  Core Idea
 
-This game is inspired by **planar surface codes** in quantum error correction.
+In surface codes, physical errors on qubits are not observed directly.  
+Instead, **stabilizer measurements** reveal *syndrome defects* (also called *anyons*), which must be paired and corrected carefully.
 
-- **Defects (dots)** represent stabilizer violations (anyons)
-- **Paths (lines)** represent correction operators
-- A path connecting the **top and bottom boundaries** forms a logical operator
-  → **game over**
+This game maps those ideas directly:
 
----
+| Game Element | Quantum Meaning |
+|-------------|----------------|
+| Glowing dots | Syndrome defects (stabilizer violations) |
+| Blue lines  | Physical X-errors on data qubits |
+| Player paths | Decoder correction operators |
+| Game over   | Logical operator formed |
 
-## 🎮 How to Play
-
-1. Click a defect to select it
-2. Click a second defect to apply a correction
-3. Energy cost depends on Manhattan distance
-4. End Turn advances time and introduces new noise
-5. Use **Scan** for pairing hints
+Removing all visible defects does **not** mean all physical errors are gone — it only means the syndrome is clean.  
+This distinction is a key learning objective of the game.
 
 ---
 
-## 🏆 Scoring
+##  Gameplay Overview
+
+### Objective
+- **Remove all defects** (glowing dots)
+- Use **as little energy and time as possible**
+- Avoid creating boundary-spanning correction paths
+
+### Controls
+- **Click** a defect to select it
+- **Click a second defect** to apply a correction path
+- **Scan** suggests a nearby defect pair
+- **End Turn** advances time and may introduce new noise
+- **Restart** starts a fresh run
+
+---
+
+##  Winning and Losing
+
+###  Win Condition
+- All defects are removed
+- The game ends successfully
+- Your final score is recorded
+
+###  Lose Condition (Logical Failure)
+- If a **correction path connects the top boundary to the bottom boundary**
+- This represents a **logical operator** acting on the encoded qubit
+- The game ends immediately
+
+This models a key idea in quantum error correction:
+> Logical errors often arise not from noise alone, but from *poor decoding choices*.
+
+---
+
+##  Scoring System
+
+The score measures **decoder efficiency**.
 
 - Score increases with:
-  - Energy used
+  - Energy used (long correction paths)
   - Time taken
 - **Lower score = better decoding**
-- Best score is stored locally
+- Best score is stored locally in the browser
+
+This encourages careful, local corrections instead of long, risky paths.
 
 ---
 
-## 🧪 Educational Goals
+##  Noise Model
 
-- Visualize quantum error correction intuitively
-- Show how poor decoding leads to logical failure
-- Encourage energy-efficient, minimal corrections
+- Errors are injected only on **interior edges** of a planar lattice
+- Each noise event creates **pairs of defects**
+- Noise is applied every second turn (beginner-friendly regime)
+
+This places the game in a **below-threshold regime**, where successful decoding is expected — consistent with surface-code theory.
 
 ---
 
-## 🚀 Run Locally
+##  Educational Goals
 
-```bash
+This project aims to:
+- Build intuition for **surface-code decoding**
+- Demonstrate how logical errors emerge from decoding paths
+- Show the difference between *physical errors* and *syndrome information*
+- Encourage energy-efficient correction strategies
+
+---
+
+##  Running the game Locally
+
+### Requirements
+- **Node.js** (v18 or newer recommended)
+- npm (comes with Node.js)
+
+### Installation
+``
 npm install
-npm run dev
+
+Clone the repository:
+``
+git clone https://github.com/<your-username>/quantum-dungeon.git
+cd quantum-dungeon
+
+
+
