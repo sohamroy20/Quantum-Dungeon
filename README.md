@@ -122,6 +122,9 @@ npm install
 npm run dev
 ```
 Then open the link at localhost. Typically http://localhost:5173
+
+How it looks.....
+
 <img width="1507" height="777" alt="image" src="https://github.com/user-attachments/assets/e10af6d2-fc12-471c-ae7a-a3c090e2ccab" />
 
 
