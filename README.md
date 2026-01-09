@@ -101,12 +101,24 @@ This project aims to:
 
 ### Installation
 ```bash
-npm install
+brew install node npm (on mac)
 ```
+```
+sudo apt update(linux)
+sudo apt install -y nodejs npm (linux)
+```
+check for both 
+```
+node -v
+npm -v
+```
+
 Clone the repository:
 ```bash
 git clone https://github.com/sohamroy20/Quantum-Dungeon.git
+cd Quantum-Dungeon
 cd quantum-dungeon
+npm install
 npm run dev
 ```
 Then open the link at localhost. Typically http://localhost:5173
