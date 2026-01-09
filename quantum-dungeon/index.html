@@ -2,12 +2,93 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>quantum-dungeon</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Quantum Dungeon</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo-dot"></div>
+          <div class="titles">
+            <div class="title">QUANTUM DUNGEON</div>
+            <div class="subtitle">Surface-code decoder console</div>
+          </div>
+        </div>
+
+        <div class="hud">
+          <div class="hud-item"><span class="k">Noise p</span><span id="hud-p" class="v">0.04</span></div>
+          <div class="hud-item"><span class="k">Energy</span><span id="hud-energy" class="v">12</span></div>
+          <div class="hud-item"><span class="k">Turn</span><span id="hud-turn" class="v">1</span></div>
+          <div class="hud-item"><span class="k">Defects</span><span id="hud-defects" class="v">0</span></div>
+          <div class="hud-item"><span class="k">Score</span><span id="hud-score" class="v">0</span></div>
+          <div class="hud-item"><span class="k">Time</span><span id="hud-time" class="v">0s</span></div>
+          <div class="hud-item"><span class="k">Best</span><span id="hud-best" class="v">0</span></div>
+
+        </div>
+
+        <div class="actions">
+          <button id="btn-scan" class="btn">Scan</button>
+          <button id="btn-endturn" class="btn primary">End Turn</button>
+          <button id="btn-restart" class="btn">Restart</button>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="board-card">
+          <canvas id="board" width="960" height="640"></canvas>
+          <div class="statusline">
+            <span id="status">Neon console online. Click two defects to connect them (demo scaffold).</span>
+          </div>
+        </section>
+
+        <aside class="side">
+          <div class="panel">
+            <div class="panel-title">Controls</div>
+            <ul class="panel-list">
+              <li><b>Click</b> a defect to select it.</li>
+              <li><b>Click</b> a second defect to draw a correction path.</li>
+              <li><b>End Turn</b> advances the round (real noise later).</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+              <div class="panel-title">How to Play</div>
+
+              <ul class="panel-list">
+                <li><b>Goal</b>: Remove all glowing defects.</li>
+                <li><b>Dots</b> = detected errors (anyons / syndrome).</li>
+                <li><b>Lines</b> = physical qubit errors.</li>
+              </ul>
+
+              <div class="panel-title" style="margin-top:12px;">Actions</div>
+              <ul class="panel-list">
+                <li>Click <b>two defects</b> to apply a correction.</li>
+                <li>Energy cost = Manhattan distance.</li>
+                <li><b>Scan</b> highlights a good pairing.</li>
+              </ul>
+
+              <div class="panel-title" style="margin-top:12px;">Scoring</div>
+              <ul class="panel-list">
+                <li>Score increases with energy used and time.</li>
+                <li><b>Lower score = better decoding.</b></li>
+              </ul>
+
+              <div class="panel-title" style="margin-top:12px;">Win / Lose</div>
+              <ul class="panel-list">
+                <li><b>Win</b>: All defects removed.</li>
+                <li><b>Lose</b>: A correction path connects <b>top → bottom</b>.</li>
+                <li>This forms a <b>logical operator</b>.</li>
+              </ul>
+            </div>
+        </aside>
+      </main>
+
+      <footer class="footer">
+        <span>v0.1 scaffold — next: lattice + noise + syndrome + logical-chain detection</span>
+      </footer>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
